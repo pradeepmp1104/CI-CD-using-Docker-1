@@ -37,8 +37,9 @@ pipeline {
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "sudo docker -H ssh://jenkins@172.31.0.186 run -d -p 8000:8090 pradeepmp1/cicd:latest"
- 
+                sh "sudo docker run -d -p 8000:8090 pradeepmp1/cicd:latest"
+                sh"sudo docker commit pradeepmp1/cicd:latest"
+		    sh"sudo docker push pradeepmp1/cicd:latest"
             }
         }
     }
