@@ -17,7 +17,7 @@ pipeline {
 
   stage('Docker Build and Tag') {
            steps {
-              
+                sh 'sudo su'
                 sh 'docker build -t cicd:latest .' 
                 sh 'docker tag cicd pradeepmp1/cicd:latest'
                 sh 'docker commit pradeepmp1/cicd:latest'
