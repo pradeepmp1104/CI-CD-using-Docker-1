@@ -23,9 +23,14 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
            	    {
+			     steps {
+		    withDockerRegistry([ credentialsId:"dockerHub", url: " " ])
+				     
+			    sh 'docker commit cicd pradeepmp1/cicd:latest'
           sh  'docker push  pradeepmp1/cicd:latest'
         //  sh  'docker push  pradeepmp1/cicd:$BUILD_NUMBER' 
         }
+		    }
                   
           
         }
