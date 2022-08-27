@@ -30,15 +30,14 @@ pipeline {
              
             steps 
 			{
-                sh "sudo docker run -d -p 8000:8090 pradeepmp1/cicd:latest"
+                sh "sudo docker run -d -p 8000:8090 pradeepmp1/cicd"
  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "sudo docker run -d -p 8000:8090 pradeepmp1/cicd:latest"
-                sh"sudo docker commit pradeepmp1/cicd:latest"
+                    sh"sudo docker commit pradeepmp1/cicd:latest"
 		    sh"sudo docker push pradeepmp1/cicd:latest"
             }
         }
