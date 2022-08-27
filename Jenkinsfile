@@ -19,9 +19,8 @@ pipeline {
            steps {
                 sh 'sudo docker build -t cicd:latest .' 
                 sh 'sudo docker tag cicd pradeepmp1/cicd:latest'
-                sh 'sudo docker commit pradeepmp1/cicd:latest'
-		             sh  'sudo docker push pradeepmp1/cicd:latest'
-
+                		             sh  'sudo docker push pradeepmp1/cicd:latest'
+                   sh 'sudo docker commit pradeepmp1/cicd'
                 //sh 'docker tag cicd pradeepmp1/cicd:$BUILD_NUMBER'
                
           }
