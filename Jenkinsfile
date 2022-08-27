@@ -20,6 +20,8 @@ pipeline {
                 sh 'sudo docker build -t cicd:latest .' 
                 sh 'sudo docker tag cicd pradeepmp1/cicd:latest'
                 sh 'sudo docker commit pradeepmp1/cicd:latest'
+		             sh  'sudo docker push pradeepmp1/cicd:latest'
+
                 //sh 'docker tag cicd pradeepmp1/cicd:$BUILD_NUMBER'
                
           }
@@ -28,7 +30,7 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) 
+        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) 
 		    {
           sh  'sudo docker push pradeepmp1/cicd:latest'
         //  sh  'docker push pradeepmp1/cicd:$BUILD_NUMBER' 
