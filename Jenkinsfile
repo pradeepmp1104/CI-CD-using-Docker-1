@@ -24,12 +24,15 @@ pipeline {
           
             steps {
       withDockerRegistry([ credentialsId: "dockerHub"]) {
+	      cont.push()
+    cont.push('latest')
+  }
        sh'docker commit pradeepmp1/cicd:latest'
 		sh  'docker push pradeepmp1/cicd:latest'
         //  sh  'docker push pradeepmp1/cicd:$BUILD_NUMBER' 
         }
-                  
-          }
+              
+         
         }
       stage('Run Docker container on Jenkins Agent') {
              
