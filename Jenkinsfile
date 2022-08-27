@@ -30,7 +30,7 @@ pipeline {
         //  sh  'docker push pradeepmp1/cicd:$BUILD_NUMBER' 
         }
               
-         
+	    }
         }
       stage('Run Docker container on Jenkins Agent') {
              
