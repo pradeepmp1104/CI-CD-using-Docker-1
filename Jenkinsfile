@@ -30,7 +30,7 @@ pipeline {
              
             steps 
 			{
-                sh "sudo docker run -d -p 8000:8090 pradeepmp1/cicd"
+                sh "sudo docker run -d -p 92:92 pradeepmp1/cicd"
  
             }
         }
