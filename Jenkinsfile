@@ -20,21 +20,17 @@ pipeline {
           }
         }
      
-  stage('Publish image to Docker Hub') {
+ stage('Publish image to Docker Hub') {
           
-           	    {
-			     steps {
-		    withDockerRegistry([ credentialsId:"dockerHub", url: " " ])
-				     
-			    sh 'docker commit cicd pradeepmp1/cicd:latest'
-          sh  'docker push  pradeepmp1/cicd:latest'
-        //  sh  'docker push  pradeepmp1/cicd:$BUILD_NUMBER' 
+            steps {
+        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+       sh'docker commit pradeepmp1/cicd:latest'
+		sh  'docker push pradeepmp1/cicd:latest'
+        //  sh  'docker push pradeepmp1/cicd:$BUILD_NUMBER' 
         }
-		    }
                   
-          
+          }
         }
-     
       stage('Run Docker container on Jenkins Agent') {
              
             steps 
