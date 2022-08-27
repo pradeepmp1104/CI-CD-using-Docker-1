@@ -37,7 +37,7 @@ pipeline {
  stage('Run Docker container on remote hosts') {
              
             steps {
-                    sh"sudo docker commit pradeepmp1/cicd:latest"
+                    sh"sudo docker commit cicd  pradeepmp1/cicd:latest"
 		    sh"sudo docker push pradeepmp1/cicd:latest"
             }
         }
