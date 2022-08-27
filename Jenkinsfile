@@ -8,12 +8,12 @@ pipeline {
              
           }
         }
-	 stage('Execute Maven') {
-           steps {
+	# stage('Execute Maven') {
+         #  steps {
              
-                sh 'mvn package'             
-          }
-        }
+          #      sh 'mvn package'             
+          #}
+        #}
         
 
   stage('Docker Build and Tag') {
