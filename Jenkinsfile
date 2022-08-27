@@ -23,7 +23,7 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-		    withDockerRegistry([ credentialsId:pradeepmp1 "dockerHub", url: "https://hub.docker.com/" ])
+		    withDockerRegistry([ credentialsId:"dockerHub", url: "" ])
 
 		    {
           sh  'docker push  pradeepmp1/cicd:latest'
