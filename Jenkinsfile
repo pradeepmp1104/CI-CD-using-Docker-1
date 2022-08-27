@@ -25,18 +25,7 @@ pipeline {
           }
         }
      
-  stage('Publish image to Docker Hub') {
-          
-            steps {
-        withDockerRegistry([ credentialsId: "dockerHub", url: "https://hub.docker.com/" ]) 
-		    {
-          //sh  'sudo docker push pradeepmp1/cicd:latest'
-        //  sh  'docker push pradeepmp1/cicd:$BUILD_NUMBER' 
-        }
-                  
-          }
-        }
-     
+      
       stage('Run Docker container on Jenkins Agent') {
              
             steps 
