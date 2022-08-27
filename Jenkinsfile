@@ -17,10 +17,9 @@ pipeline {
 
   stage('Docker Build and Tag') {
            steps {
-                sh 'sudo su'
-                sh 'docker build -t cicd:latest .' 
-                sh 'docker tag cicd pradeepmp1/cicd:latest'
-                sh 'docker commit pradeepmp1/cicd:latest'
+                sh 'sudo docker build -t cicd:latest .' 
+                sh 'sudo docker tag cicd pradeepmp1/cicd:latest'
+                sh 'sudo docker commit pradeepmp1/cicd:latest'
                 //sh 'docker tag cicd pradeepmp1/cicd:$BUILD_NUMBER'
                
           }
@@ -30,7 +29,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          sh  'docker push pradeepmp1/cicd:latest'
+          sh  'sudo docker push pradeepmp1/cicd:latest'
         //  sh  'docker push pradeepmp1/cicd:$BUILD_NUMBER' 
         }
                   
@@ -41,14 +40,14 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 8000:8090 pradeepmp1/cicd"
+                sh "sudo docker run -d -p 8000:8090 pradeepmp1/cicd"
  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://jenkins@172.31.0.186 run -d -p 8000:8090 pradeepmp1/cicd:latest"
+                sh "sudo docker -H ssh://jenkins@172.31.0.186 run -d -p 8000:8090 pradeepmp1/cicd:latest"
  
             }
         }
