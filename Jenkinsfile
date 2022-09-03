@@ -3,7 +3,7 @@ pipeline {
 	
 	  tools
     {
-       mvn
+       mvn 3.0.5
     }
  stages {
       stage('checkout') {
