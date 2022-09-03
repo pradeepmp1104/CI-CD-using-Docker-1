@@ -1,11 +1,7 @@
 pipeline {
     agent any
-	
-	  tools
-    {
-       mvn 3.0.5
-    }
- stages {
+		  
+    stages {
       stage('checkout') {
            steps {
              
